@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Home from "../assets/home-solid.svg";
 import Team from "../assets/social.svg";
-import Calender from "../assets/scheduled.svg";
+import Calendar from "../assets/scheduled.svg";
 import Projects from "../assets/starred.svg";
 import Documents from "../assets/draft.svg";
 import PowerOff from "../assets/power-off-solid.svg";
@@ -150,6 +150,22 @@ const Sidebar = () => {
           <Item onClick={() => setClick(false)} to="/">
             <img src={Home} />
             <Text $clicked={click}>Home</Text>
+          </Item>
+          <Item onClick={() => setClick(false)} to="/team">
+            <img src={Team} />
+            <Text $clicked={click}>Team</Text>
+          </Item>
+          <Item onClick={() => setClick(false)} to="/calendar">
+            <img src={Calendar} />
+            <Text $clicked={click}>Team</Text>
+          </Item>
+          <Item onClick={() => setClick(false)} to="/documents">
+            <img src={Documents} />
+            <Text $clicked={click}>Documents</Text>
+          </Item>
+          <Item onClick={() => setClick(false)} to="/projects">
+            <img src={Projects} />
+            <Text $clicked={click}>Projects</Text>
           </Item>
         </Bar>
       </SidebarContainer>
