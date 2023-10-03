@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: fixed;
@@ -66,6 +67,52 @@ const Logo = styled.div`
   }
 `;
 
+const Bar = styled.ul`
+  color: var(--white);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--black);
+
+  padding: 2rem 0;
+
+  position: absolute;
+  top: 6rem;
+  left: 0;
+
+  width: ${(props) => (props.clicked ? "12rem" : "3.5rem")};
+  transition: all 0.5s ease;
+  border-radius: 0 30px 30px 0;
+`;
+
+const Item = styled(Link)`
+  text-decoration: none;
+  color: var(--white);
+  width: 100%;
+  padding: 1rem 0;
+  cursor: pointer;
+
+  display: flex;
+  padding-left: 1rem;
+
+  &:hover {
+    border-right: 4px solid var(--white);
+
+    img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+    }
+  }
+
+  img {
+    width: 1.2rem;
+    height: auto;
+    filter: invert(92%) sepia(4%) saturate(1033%) hue-rotate(169deg)
+      brightness(78%) contrast(85%);
+  }
+`;
+
 const Sidebar = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(click => !click);
@@ -75,8 +122,11 @@ const Sidebar = () => {
       <Button $clicked={click} onClick={() => handleClick()} />
       <SidebarContainer>
         <Logo>
-            <img src="/logo.png" />
+          <img src="/logo.png" />
         </Logo>
+        <Bar $clicked={click}>
+          <Item to="/team">hello</Item>
+        </Bar>
       </SidebarContainer>
     </Container>
   );
