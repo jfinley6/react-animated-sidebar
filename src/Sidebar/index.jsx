@@ -41,6 +41,22 @@ const Button = styled.button`
   }
 `;
 
+const SidebarContainer = styled.div`
+  background-color: var(--black);
+  width: 3.5rem;
+  height: 80vh;
+  margin-top: 1rem;
+  border-radius: 0 30px 30px 0;
+  padding: 1rem 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+`;
+
 const Sidebar = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(click => !click);
@@ -48,6 +64,7 @@ const Sidebar = () => {
   return (
     <Container>
       <Button $clicked={click} onClick={() => handleClick()} />
+      <SidebarContainer />
     </Container>
   );
 };
