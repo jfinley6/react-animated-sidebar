@@ -1,9 +1,24 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Home from "../assets/home-solid.svg";
+import Team from "../assets/social.svg";
+import Calender from "../assets/scheduled.svg";
+import Projects from "../assets/starred.svg";
+import Documents from "../assets/draft.svg";
+import PowerOff from "../assets/power-off-solid.svg";
 
 const Container = styled.div`
   position: fixed;
+
+  .active {
+    border-right: 4px solid var(--white);
+
+    img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+    }
+  }
 `;
 
 const Button = styled.button`
@@ -81,12 +96,12 @@ const Bar = styled.ul`
   top: 6rem;
   left: 0;
 
-  width: ${(props) => (props.clicked ? "12rem" : "3.5rem")};
+  width: ${(props) => (props.$clicked ? "12rem" : "3.5rem")};
   transition: all 0.5s ease;
   border-radius: 0 30px 30px 0;
 `;
 
-const Item = styled(Link)`
+const Item = styled(NavLink)`
   text-decoration: none;
   color: var(--white);
   width: 100%;
@@ -113,9 +128,16 @@ const Item = styled(Link)`
   }
 `;
 
+const Text = styled.span`
+  width: ${(props) => (props.$clicked ? "100%" : "0")};
+  overflow: hidden;
+  margin-left: ${(props) => (props.$clicked ? "1.5rem" : "0")};
+  transition: all 0.3s ease;
+`;
+
 const Sidebar = () => {
   const [click, setClick] = useState(false);
-  const handleClick = () => setClick(click => !click);
+  const handleClick = () => setClick((click) => !click);
 
   return (
     <Container>
@@ -125,7 +147,10 @@ const Sidebar = () => {
           <img src="/logo.png" />
         </Logo>
         <Bar $clicked={click}>
-          <Item to="/team">hello</Item>
+          <Item onClick={() => setClick(false)} to="/">
+            <img src={Home} />
+            <Text $clicked={click}>Home</Text>
+          </Item>
         </Bar>
       </SidebarContainer>
     </Container>
