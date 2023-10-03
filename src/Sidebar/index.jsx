@@ -57,6 +57,15 @@ const SidebarContainer = styled.div`
   position: relative;
 `;
 
+const Logo = styled.div`
+  width: 2rem;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+
 const Sidebar = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(click => !click);
@@ -64,7 +73,11 @@ const Sidebar = () => {
   return (
     <Container>
       <Button $clicked={click} onClick={() => handleClick()} />
-      <SidebarContainer />
+      <SidebarContainer>
+        <Logo>
+            <img src="/logo.png" />
+        </Logo>
+      </SidebarContainer>
     </Container>
   );
 };
