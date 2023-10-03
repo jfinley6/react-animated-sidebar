@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Outlet, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Team from "./Pages/Team";
 import Calendar from "./Pages/Calendar";
@@ -6,7 +6,7 @@ import Documents from "./Pages/Documents";
 import Projects from "./Pages/Projects";
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar/Sidebar";
 
 const Pages = styled.div`
   width: 100vw;
@@ -24,38 +24,30 @@ const Pages = styled.div`
   }
 `;
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/team",
-    element: <Team />,
-  },
-  {
-    path: "/calendar",
-    element: <Calendar />,
-  },
-  {
-    path: "/documents",
-    element: <Documents />,
-  },
-  {
-    path: "/projects",
-    element: <Projects />,
-  },
-]);
+const AppLayout = () => (
+  <>
+    <Sidebar />
+    <Pages>
+      <AnimatePresence mode="wait">
+        <Outlet />
+      </AnimatePresence>
+    </Pages>
+  </>
+);
 
 function App() {
   return (
     <>
-      <Sidebar />
-      <Pages>
-        <AnimatePresence mode="wait">
-          <RouterProvider router={router} />
-        </AnimatePresence>
-      </Pages>
+      <Routes>
+        <Route element={<AppLayout />} >
+          <Route path="/" element={<Home />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/projects" element={<Projects />} />
+        </Route>
+      </Routes>
+      
     </>
   );
 }
