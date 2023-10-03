@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home";
-import Team from "./Pages/Team"
-import Calendar from "./Pages/Calendar"
-import Documents from "./Pages/Documents"
-import Projects from "./Pages/Projects"
+import Team from "./Pages/Team";
+import Calendar from "./Pages/Calendar";
+import Documents from "./Pages/Documents";
+import Projects from "./Pages/Projects";
 import styled from "styled-components";
+import { AnimatePresence } from "framer-motion";
+import Sidebar from "./Sidebar";
 
 const Pages = styled.div`
   width: 100vw;
@@ -48,8 +50,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
+      <Sidebar />
       <Pages>
-        <RouterProvider router={router} />
+        <AnimatePresence mode="wait">
+          <RouterProvider router={router} />
+        </AnimatePresence>
       </Pages>
     </>
   );
