@@ -144,7 +144,7 @@ const Sidebar = () => {
       <Button $clicked={click} onClick={() => handleClick()} />
       <SidebarContainer>
         <Logo>
-          <img src="/logo.png" />
+          <img src="/vite.svg" />
         </Logo>
         <Bar $clicked={click}>
           <Item onClick={() => setClick(false)} to="/">
