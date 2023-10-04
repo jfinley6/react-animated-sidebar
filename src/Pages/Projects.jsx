@@ -1,4 +1,5 @@
 import React from 'react'
+import Motion from "./Motion";
 
 const Projects = () => {
   return (
@@ -6,4 +7,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default Motion(Projects)

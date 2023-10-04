@@ -1,4 +1,4 @@
-import { Outlet, Routes, Route } from "react-router-dom";
+import { Outlet, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 import Team from "./Pages/Team";
 import Calendar from "./Pages/Calendar";
@@ -24,21 +24,34 @@ const Pages = styled.div`
   }
 `;
 
-const AppLayout = () => (
-  <>
-    <Sidebar />
-    <Pages>
-      <AnimatePresence mode="wait">
-        <Outlet />
-      </AnimatePresence>
-    </Pages>
-  </>
-);
+// const AppLayout = () => (
+//   <>
+//     <Sidebar />
+//     <Pages>
+//       <AnimatePresence mode="wait">
+//         <Outlet />
+//       </AnimatePresence>
+//     </Pages>
+//   </>
+// );
 
 function App() {
+  const location = useLocation();
   return (
     <>
-      <Routes>
+      <Sidebar />
+      <Pages>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route index element={<Home />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/documents" element={<Documents />} />
+            <Route path="/projects" element={<Projects />} />
+          </Routes>
+        </AnimatePresence>
+      </Pages>
+      {/* <Routes>
         <Route element={<AppLayout />} >
           <Route path="/" element={<Home />} />
           <Route path="/team" element={<Team />} />
@@ -46,8 +59,7 @@ function App() {
           <Route path="/documents" element={<Documents />} />
           <Route path="/projects" element={<Projects />} />
         </Route>
-      </Routes>
-      
+      </Routes> */}
     </>
   );
 }

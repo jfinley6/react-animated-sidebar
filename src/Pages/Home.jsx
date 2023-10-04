@@ -1,4 +1,5 @@
 import React from 'react'
+import Motion from "./Motion"
 
 const Home = () => {
   return (
@@ -6,4 +7,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Motion(Home)

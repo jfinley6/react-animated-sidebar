@@ -1,4 +1,5 @@
 import React from 'react'
+import Motion from "./Motion";
 
 const Calendar = () => {
   return (
@@ -6,4 +7,4 @@ const Calendar = () => {
   )
 }
 
-export default Calendar
+export default Motion(Calendar)

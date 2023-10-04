@@ -1,4 +1,5 @@
 import React from 'react'
+import Motion from "./Motion";
 
 const Team = () => {
   return (
@@ -6,4 +7,4 @@ const Team = () => {
   )
 }
 
-export default Team
+export default Motion(Team)
