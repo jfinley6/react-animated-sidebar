@@ -145,7 +145,7 @@ const Profile = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: ${(props) => (props.$clicked ? "9rem" : "0")};
+  margin-left: ${(props) => (props.$clicked ? "11rem" : "0")};
 
   background-color: var(--black);
   color: var(--white);
