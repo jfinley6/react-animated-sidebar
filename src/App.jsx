@@ -24,17 +24,6 @@ const Pages = styled.div`
   }
 `;
 
-// const AppLayout = () => (
-//   <>
-//     <Sidebar />
-//     <Pages>
-//       <AnimatePresence mode="wait">
-//         <Outlet />
-//       </AnimatePresence>
-//     </Pages>
-//   </>
-// );
-
 function App() {
   const location = useLocation();
   return (
@@ -51,15 +40,6 @@ function App() {
           </Routes>
         </AnimatePresence>
       </Pages>
-      {/* <Routes>
-        <Route element={<AppLayout />} >
-          <Route path="/" element={<Home />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/documents" element={<Documents />} />
-          <Route path="/projects" element={<Projects />} />
-        </Route>
-      </Routes> */}
     </>
   );
 }
