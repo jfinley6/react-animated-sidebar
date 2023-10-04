@@ -135,9 +135,91 @@ const Text = styled.span`
   transition: all 0.3s ease;
 `;
 
+const Profile = styled.div`
+  width: ${(props) => (props.$clicked ? "14rem" : "3rem")};
+  height: 3rem;
+
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: ${(props) => (props.$clicked ? "9rem" : "0")};
+
+  background-color: var(--black);
+  color: var(--white);
+
+  transition: all 0.3s ease;
+
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      border: 2px solid var(--grey);
+      padding: 2px;
+    }
+  }
+`;
+
+const Details = styled.div`
+  display: ${(props) => (props.$clicked ? "flex" : "none")};
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Name = styled.div`
+  padding: 0 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h4 {
+    display: inline-block;
+  }
+
+  a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--grey);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const Logout = styled.button`
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+
+  img {
+    width: 100%;
+    height: auto;
+    filter: invert(15%) sepia(70%) saturate(6573%) hue-rotate(2deg)
+      brightness(100%) contrast(126%);
+    transition: all 0.3s ease;
+    &:hover {
+      border: none;
+      padding: 0;
+      opacity: 0.5;
+    }
+  }
+`;
+
 const Sidebar = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick((click) => !click);
+
+  const [profileClick, setprofileClick] = useState(false);
+  const handleProfileClick = () => setprofileClick(!profileClick);
 
   return (
     <Container>
@@ -168,6 +250,24 @@ const Sidebar = () => {
             <Text $clicked={click}>Projects</Text>
           </Item>
         </Bar>
+
+        <Profile $clicked={profileClick}>
+          <img
+            onClick={() => handleProfileClick()}
+            src="/profile.jpeg"
+            alt="Profile"
+          />
+          <Details $clicked={profileClick}>
+            <Name>
+              <h4>John&nbsp;Finley</h4>
+              <a href="/#">view&nbsp;profile</a>
+            </Name>
+
+            <Logout>
+              <img src={PowerOff} alt="logout" />
+            </Logout>
+          </Details>
+        </Profile>
       </SidebarContainer>
     </Container>
   );
